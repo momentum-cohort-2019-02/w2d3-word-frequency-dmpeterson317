@@ -37,9 +37,20 @@ def print_word_freq(filename):
                 word_freq[word] += 1 
             else:
                 word_freq[word] = 1
-
-    for word, freq in word_freq.items():
-        print(word, "|", freq, "*" * freq)
+    
+    sorted_words = sorted(word_freq.items(), key=lambda most_used: most_used[1], reverse=True)
+    # sorted() gives me a List of Tuples, calling the temporary function 'most_used()'
+    # to sort my list based on the second element of the tuple... in reverse order)
+    i = 0
+    while i < 10:
+    # for item in sorted_words:
+        print(f"{sorted_words[i][0]} | {sorted_words[i][1]} {'*' * sorted_words[i][1]}")
+        i += 1
+    # for word, freq in word_freq.items():
+    #     print(word, "|", freq, "*" * freq)
+        # for n in freq:
+        #     print('*',)
+        # print('\n')
 
 if __name__ == "__main__":
     import argparse
